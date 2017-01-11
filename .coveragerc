@@ -1,0 +1,7 @@
+[run]
+branch = True
+source = mdl, tests
+omit = site-packages
+
+[html]
+directory = coverage

@@ -1,0 +1,31 @@
+sudo: required
+
+language: python
+
+python:
+  - "2.7"
+  - "3.5"
+  - "3.6"
+
+os:
+  - linux
+
+cache:
+  directories:
+  - $HOME/.cache/pip
+
+before_cache:
+  - rm -f $HOME/.cache/pip/log/debug.log
+
+install:
+  - sudo apt-get install enchant
+  - pip install --upgrade pip wheel
+  - pip install --upgrade setuptools
+  - pip install -r requirements-ci.txt
+  - pip install codecov
+
+script:
+  - make coverage
+
+after_success:
+  - codecov

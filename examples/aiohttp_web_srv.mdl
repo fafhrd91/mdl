@@ -1,0 +1,68 @@
+swagger: "2.0"
+info:
+  title: aiohttp example
+  version: v0.1
+
+basePath: /
+
+x-mdl-name: TestApp
+x-mdl-package: aiohttp_web_srv
+
+paths:
+  /stream/test/:
+    get:
+       tags:
+         - root
+       operationId: stream_test
+       produces:
+         - text/html
+       responses:
+         '200':
+           description: OK
+
+       x-mdl-handler:
+         - aiohttp_web_srv.prepare_stream
+
+  /{item_id}/:
+    get:
+       tags:
+         - root
+       operationId: item_info
+       produces:
+         - text/plain
+       parameters:
+       - name: item_id
+         in: path
+         description: item ID
+         required: true
+         type: integer
+         format: itemID
+       responses:
+         '200':
+             description: OK
+             schema:
+               $ref: '#/definitions/Pong'
+
+       x-mdl-handler:
+         - aiohttp_web_srv.item_info
+
+  /:
+    get:
+       tags:
+         - root
+       operationId: intro
+       produces:
+         - text/plain
+       responses:
+         '200':
+           description: OK
+
+       x-mdl-handler:
+         - aiohttp_web_srv.index
+
+definitions:
+  Pong:
+    type: object
+    properties:
+       pang:
+         type: string

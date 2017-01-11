@@ -1,0 +1,5 @@
+bravado_core
+zope.interface>=4.3.3
+venusian>=1.0
+PyContracts>=1.7.15
+PyYAML
