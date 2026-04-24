@@ -1,5 +1,5 @@
 -r requirements.txt
-pip==9.0.1
+pip==26.0.1
 flake8==3.2.1
 pyflakes==1.5.0
 coverage==4.2
